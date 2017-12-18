@@ -6,8 +6,7 @@ const httpLogger = require('morgan');
 const helmet = require('helmet');
 
 // require routes
-const index = require('./routes/index');
-const users = require('./routes/users');
+const routes = require('./routes/routes');
 
 // create Express app
 const app = express();
@@ -25,10 +24,11 @@ app.use(helmet());
 // setup to enable application to parse incoming JSON payloads
 app.use(express.json());
 
+// allow public to be accessible by outsiders
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+// set up routes
+app.use(routes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

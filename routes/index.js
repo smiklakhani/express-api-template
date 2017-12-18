@@ -4,10 +4,9 @@ const express = require('express');
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   logger.log('info', 'index route was requested');
   res.render('index', { title: 'Express' });
-  next();
 });
 
 module.exports = router;
