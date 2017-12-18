@@ -7,11 +7,11 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('Users', () => {
-  it('should list ALL users on /users GET', (done) => {
+  it('should list ALL users on /users GET', done => {
     chai
       .request(server)
       .get('/users')
-      .end(function(err, res) {
+      .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
         done();
