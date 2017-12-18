@@ -1,19 +1,20 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
 
 /* GET users listing. */
-router.get("/", function(req, res, next) {
+router.get('/', (req, res) => {
   const userList = [
     {
-      firstName: "John",
-      lastName: "Waley",
-      age: 36
+      firstName: 'John',
+      lastName: 'Waley',
+      age: 36,
     },
     {
-      firstName: "Dorothy",
-      lastName: "Shaw",
-      age: 24
-    }
+      firstName: 'Dorothy',
+      lastName: 'Shaw',
+      age: 24,
+    },
   ];
 
   res.json(userList);

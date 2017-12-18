@@ -1,15 +1,16 @@
-var chai = require("chai");
-var chaiHttp = require("chai-http");
-var server = require("../app");
-var should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../app');
+
+const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe("Users", () => {
-  it("should list ALL users on /users GET", function(done) {
+describe('Users', () => {
+  it('should list ALL users on /users GET', (done) => {
     chai
       .request(server)
-      .get("/users")
+      .get('/users')
       .end(function(err, res) {
         res.should.have.status(200);
         res.should.be.json;
