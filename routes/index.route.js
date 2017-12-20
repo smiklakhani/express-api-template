@@ -1,12 +1,9 @@
-const logger = require('winston');
 const express = require('express');
+const renderIndex = require('../controllers/index.controller');
 
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  logger.log('info', 'index route was requested');
-  res.render('index', { title: 'Express' });
-});
+router.get('/', renderIndex);
 
 module.exports = router;
