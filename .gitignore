@@ -21,3 +21,9 @@ node_modules
 
 #OS Files
 .DS_Store
+
+#IDE Folders and Files
+.vscode
+
+#Ignore Istanbul coverage report
+/coverage
