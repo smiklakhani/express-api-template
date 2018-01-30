@@ -4,16 +4,13 @@ const path = require('path');
 const logger = require('winston');
 const httpLogger = require('morgan');
 const helmet = require('helmet');
+const config = require('./config/config');
 
 // require routes
-const routes = require('./routes/routes');
+const routes = require('./src/routes/routes');
 
 // create Express app
 const app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 // logging setup
 app.use(httpLogger('dev'));
@@ -24,11 +21,13 @@ app.use(helmet());
 // setup to enable application to parse incoming JSON payloads
 app.use(express.json());
 
-// allow public to be accessible by outsiders
-app.use(express.static(path.join(__dirname, 'public')));
+// set up healthCheck route
+app.get(`/${config.API_NAME}/healthCheck`, (req, res) => {
+  res.json({status: 'we are live'});
+})
 
 // set up routes
-app.use(routes);
+app.use(`/${config.API_NAME}`, routes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

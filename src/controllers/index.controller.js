@@ -6,8 +6,7 @@ const logger = require('winston');
  * @param {*} res
  */
 const renderIndex = (req, res) => {
-  logger.log('info', 'index route was requested');
-  res.render('index', { title: 'Express' });
+  res.status(200).send("Hello World!");
 };
 
 module.exports = renderIndex;
